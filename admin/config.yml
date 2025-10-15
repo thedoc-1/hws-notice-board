@@ -1,25 +1,75 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # your default branch
 
-publish_mode: editorial_workflow
-
-media_folder: "images"
-public_folder: "/images"
+media_folder: "assets/images" # where uploaded images go
+public_folder: "/assets/images"
 
 collections:
-  - name: "posts"
-    label: "Notices & Opportunities"
-    folder: "src/posts"
+  - name: "today"
+    label: "Today"
+    folder: "src/today"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date created", name: "date", widget: "datetime" }
-      - { label: "Due date", name: "due_date", widget: "datetime", required: true }
-      - { label: "Section", name: "section", widget: "select", options: ["normal", "urgent", "community", "opportunity"], default: "normal" }
-      - { label: "Permanent", name: "permanent", widget: "boolean", default: false }
-      - { label: "Published", name: "published", widget: "boolean", default: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Description", name: "description", widget: "string", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Due Date", name: "due_date", widget: "datetime" }
+      
+  - name: "urgent"
+    label: "Urgent"
+    folder: "src/urgent"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Due Date", name: "due_date", widget: "datetime" }
+
+  - name: "normal"
+    label: "Notices"
+    folder: "src/normal"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Due Date", name: "due_date", widget: "datetime" }
+
+  - name: "opportunities"
+    label: "Opportunities"
+    folder: "src/opportunities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Due Date", name: "due_date", widget: "datetime" }
+      - { label: "Permanent", name: "permanent", widget: "boolean" }
+
+  - name: "community"
+    label: "Community"
+    folder: "src/community"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Due Date", name: "due_date", widget: "datetime" }
+      - { label: "Approved", name: "approved", widget: "boolean" }
+
+  - name: "past"
+    label: "Past Notices"
+    folder: "src/past"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Due Date", name: "due_date", widget: "datetime" }
