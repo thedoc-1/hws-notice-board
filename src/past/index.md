@@ -2,7 +2,5 @@
 layout: list.njk
 title: "Past Notices"
 permalink: /past/
+posts: collections.past
 ---
-
-{% set posts = collections.past %}
-
