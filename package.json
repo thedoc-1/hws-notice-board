@@ -1,0 +1,13 @@
+{
+  "name": "hws-notice-board",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "luxon": "^3.0.0"
+  }
+}

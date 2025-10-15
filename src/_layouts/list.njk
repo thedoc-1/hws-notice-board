@@ -1,0 +1,25 @@
+{% extends "base.njk" %}
+{% block content %}
+  <h2>{{ page.title }}</h2>
+  {% if posts and posts | length > 0 %}
+    <ul class="posts">
+      {% for p in posts %}
+        <li>
+          <div class="post-card">
+            {% if p.data.image %}
+              <a href="{{ p.url }}"><img src="{{ p.data.image }}" alt="{{ p.data.title }}"></a>
+            {% endif %}
+            <h3><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+            <div><small>Due: {{ p.data.due_date | fmt }}</small>
+            {% if p.data.section == "urgent" %} <span class="badge">URGENT</span> {% endif %}
+            {% if p.data.permanent %} <em> • Permanent</em> {% endif %}
+            </div>
+            <p style="margin-top:auto">{{ p.data.description or p.templateContent | striptags | truncate(150) }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts yet.</p>
+  {% endif %}
+{% endblock %}

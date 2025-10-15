@@ -1,0 +1,16 @@
+{% extends "base.njk" %}
+{% block content %}
+<article>
+  <h2>{{ title }}</h2>
+  <p><small>Due: {{ due_date | fmt }}</small>
+    {% if permanent %} • Permanent {% endif %}
+    {% if section == "urgent" %} • <strong>URGENT</strong>{% endif %}
+  </p>
+  {% if image %}
+    <img src="{{ image }}" alt="{{ title }}" style="max-width:100%;height:auto;border-radius:6px">
+  {% endif %}
+  <div class="post-body">
+    {{ content | safe }}
+  </div>
+</article>
+{% endblock %}
