@@ -2,7 +2,5 @@
 layout: list.njk
 title: "Today"
 permalink: /
+posts: collections.today
 ---
-
-{% set posts = collections.today %}
-
