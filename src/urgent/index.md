@@ -2,7 +2,5 @@
 layout: list.njk
 title: "Urgent Notices"
 permalink: /urgent/
+posts: collections.urgent
 ---
-
-{% set posts = collections.urgent %}
-
