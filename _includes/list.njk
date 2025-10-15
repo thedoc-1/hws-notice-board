@@ -1,17 +1,25 @@
 {% extends "base.njk" %}
+
 {% block content %}
 <h2>{{ page.title }}</h2>
+
 {% set posts_list = page.posts %}
+
 {% if posts_list and posts_list | length > 0 %}
 <ul class="posts">
-  {% for p in posts %}
+  {% for p in posts_list %}
   <li>
     <div class="post-card">
       {% if p.data.image %}
-      <a href="{{ p.url }}"><img src="{{ p.data.image }}" alt="{{ p.data.title }}"></a>
+        <a href="{{ p.url }}">
+          <img src="{{ p.data.image }}" alt="{{ p.data.title }}">
+        </a>
       {% endif %}
       <h3><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
       <p>{{ p.data.description or p.templateContent | striptags | truncate(150) }}</p>
+      {% if p.data.due_date %}
+      <small>Due: {{ p.data.due_date | date("dd LLL yyyy") }}</small>
+      {% endif %}
     </div>
   </li>
   {% endfor %}
@@ -20,4 +28,3 @@
 <p>No posts yet.</p>
 {% endif %}
 {% endblock %}
-
