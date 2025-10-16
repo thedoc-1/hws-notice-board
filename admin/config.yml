@@ -1,9 +1,9 @@
 backend:
   name: git-gateway
-  branch: main # your default branch
+  branch: main
 
-media_folder: "assets/images" # Uploaded files go here in repo
-public_folder: "/assets/images" # URL path used on site
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
   - name: "today"
